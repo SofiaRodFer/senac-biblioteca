@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Http;
 using System;
+using System.Linq;
 
 namespace Biblioteca.Controllers
 {
@@ -16,6 +17,7 @@ namespace Biblioteca.Controllers
 
             CadEmprestimoViewModel cadModel = new CadEmprestimoViewModel();
             cadModel.Livros = livroService.ListarTodos();
+
             return View(cadModel);
         }
 
@@ -24,18 +26,26 @@ namespace Biblioteca.Controllers
         {
             EmprestimoService emprestimoService = new EmprestimoService();
             
-            if(viewModel.Emprestimo.Id == 0)
+            bool emprestimoAntesDaDevolucao = viewModel.Emprestimo.DataDevolucao.Date < viewModel.Emprestimo.DataEmprestimo.Date;
+
+            if(!emprestimoAntesDaDevolucao) 
             {
-                emprestimoService.Inserir(viewModel.Emprestimo);
+                if(viewModel.Emprestimo.Id == 0)
+                {
+                    emprestimoService.Inserir(viewModel.Emprestimo);
+                }
+                else
+                {
+                    emprestimoService.Atualizar(viewModel.Emprestimo);
+                }
+
+                return RedirectToAction("Listagem");
+            } else {
+                return RedirectToAction();
             }
-            else
-            {
-                emprestimoService.Atualizar(viewModel.Emprestimo);
-            }
-            return RedirectToAction("Listagem");
         }
 
-        public IActionResult Listagem(string tipoFiltro, string filtro)
+        public IActionResult Listagem(string tipoFiltro, string filtro, int pagina = 1)
         {
             FiltrosEmprestimos objFiltro = null;
             if(!string.IsNullOrEmpty(filtro))
@@ -45,7 +55,17 @@ namespace Biblioteca.Controllers
                 objFiltro.TipoFiltro = tipoFiltro;
             }
             EmprestimoService emprestimoService = new EmprestimoService();
-            return View(emprestimoService.ListarTodos(objFiltro));
+            var emprestimos = emprestimoService.ListarTodos(objFiltro);
+
+            if(Request.QueryString.HasValue) {
+                string page = Request.QueryString.Value.Split('=').Last();
+                int pageNum = int.Parse(page);
+                ViewData["paginaAtual"] = pageNum;
+                return View(emprestimos);
+            } else {
+                ViewData["paginaAtual"] = pagina;
+                return View(emprestimos);
+            }
         }
 
         public IActionResult Edicao(int id)

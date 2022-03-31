@@ -1,28 +1,47 @@
 @model ICollection<Emprestimo>
 @{
     ViewData["Title"] = "Listagem de Empréstimos";
+    int numPorPagina = 10;
+
+    var numeroDePaginas = Convert.ToInt32(Math.Ceiling(Model.Count() / (double)numPorPagina));
+
+    int pgAtual = (int)ViewData["paginaAtual"];
+
+    string retornaClasse(int i) {
+        if(i == pgAtual) {
+            return "page-item active";
+        } else {
+            return "page-item";
+        }
+    }
+
+    string href = "Listagem";
+
+    int inicio = (pgAtual - 1) * numPorPagina;
+    IEnumerable<Emprestimo> emprestimosPaginados = Model.OrderBy(e=>e.Id).Skip(inicio).Take(numPorPagina);
 }
 
 <div class="row">
     <div class="col-md-12">
-    <form class="form-inline" method="POST">
-        <div class="form-group mb-2">
-            <select name="TipoFiltro" class="form-control">
-                <option value="Usuario">Usuário</option>
-                <option value="Livro">Livro</option>
-            </select>
-        </div>
-        <div class="form-group mb-2 mx-sm-3">
-            <input type="text" placeholder="Filtro" name="Filtro" class="form-control" />
-        </div>
-        <button type="submit" class="btn btn-primary mb-2">Pesquisar</button>
-    </form>
+        <form class="form-inline" method="POST">
+            <div class="form-group mb-2">
+                <select name="TipoFiltro" class="form-control">
+                    <option value="Usuario">Usuário</option>
+                    <option value="Livro">Livro</option>
+                </select>
+            </div>
+            <div class="form-group mb-2 mx-sm-3">
+                <input type="text" placeholder="Filtro" name="Filtro" class="form-control" />
+            </div>
+            <button type="submit" class="btn btn-primary mb-2">Pesquisar</button>
+        </form>
+        <p>As linhas em amarelo representam empréstimos com devolução atrasada.</p>
     </div>
 </div>
 
 <div class="row">
     <div class="col-md-12">
-        <table > 
+        <table class="table table-striped"> 
             <thead>
                 <tr><th>Id</th>
                 <th>Usuario</th>
@@ -34,20 +53,41 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach(Emprestimo e in Model)
+                @foreach(Emprestimo e in emprestimosPaginados)
                 {
-                <tr>
-                    <td>@e.Id</td>
-                    <td>@e.NomeUsuario</td>
-                    <td>@e.DataEmprestimo.ToString("dd/MM/yyyy")</td>
-                    <td>@e.DataDevolucao.ToString("dd/MM/yyyy")</td>
-                    <td>@e.Livro.Titulo</td>
-                    <td>@e.Livro.Autor</td>
-                    <td><a href="/Emprestimo/Edicao/@e.Id">Editar</a></td>
-                </tr>
+                    @if(e.DataDevolucao.Date < DateTime.Now.Date && e.Devolvido == false) 
+                    {
+                        <tr class="table-warning">
+                            <td>@e.Id</td>
+                            <td>@e.NomeUsuario</td>
+                            <td>@e.DataEmprestimo.ToString("dd/MM/yyyy")</td>
+                            <td>@e.DataDevolucao.ToString("dd/MM/yyyy")</td>
+                            <td>@e.Livro.Titulo</td>
+                            <td>@e.Livro.Autor</td>
+                            <td><a href="/Emprestimo/Edicao/@e.Id">Editar</a></td>
+                        </tr>
+                    } else {
+                        <tr>
+                            <td>@e.Id</td>
+                            <td>@e.NomeUsuario</td>
+                            <td>@e.DataEmprestimo.ToString("dd/MM/yyyy")</td>
+                            <td>@e.DataDevolucao.ToString("dd/MM/yyyy")</td>
+                            <td>@e.Livro.Titulo</td>
+                            <td>@e.Livro.Autor</td>
+                            <td><a href="/Emprestimo/Edicao/@e.Id">Editar</a></td>
+                        </tr>
+                    }
                 }
             </tbody>
         </table>
+        <ul class="pagination">  
+        @for (int i = 1; i <= numeroDePaginas; i++)  
+        {
+            <li class="@retornaClasse(i)">
+                <a class="page-link" href="@Url.Action(href, new { page = i })">@i</a>  
+            </li>  
+        }  
+        </ul>  
     </div>
 </div>
 
