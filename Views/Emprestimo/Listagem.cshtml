@@ -3,7 +3,9 @@
     ViewData["Title"] = "Listagem de Empréstimos";
     int numPorPagina = 10;
 
-    var numeroDePaginas = Convert.ToInt32(Math.Ceiling(Model.Count() / (double)numPorPagina));
+    IEnumerable<Emprestimo> emprestimos = (IEnumerable<Emprestimo>)ViewData["emprestimos"];
+
+    var numeroDePaginas = Convert.ToInt32(Math.Ceiling(emprestimos.Count() / (double)numPorPagina));
 
     int pgAtual = (int)ViewData["paginaAtual"];
 
@@ -18,7 +20,7 @@
     string href = "Listagem";
 
     int inicio = (pgAtual - 1) * numPorPagina;
-    IEnumerable<Emprestimo> emprestimosPaginados = Model.OrderBy(e=>e.Id).Skip(inicio).Take(numPorPagina);
+    IEnumerable<Emprestimo> emprestimosPaginados = emprestimos.OrderBy(e=>e.Id).Skip(inicio).Take(numPorPagina);
 }
 
 <div class="row">

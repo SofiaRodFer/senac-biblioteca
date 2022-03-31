@@ -1,6 +1,24 @@
 @model List<Livro>
 @{
     ViewData["Title"] = "Listagem de Livros";
+    int numPorPagina = 10;
+
+    var numeroDePaginas = Convert.ToInt32(Math.Ceiling(Model.Count() / (double)numPorPagina));
+
+    int pgAtual = (int)ViewData["paginaAtual"];
+
+    string retornaClasse(int i) {
+        if(i == pgAtual) {
+            return "page-item active";
+        } else {
+            return "page-item";
+        }
+    }
+
+    string href = "Listagem";
+
+    int inicio = (pgAtual - 1) * numPorPagina;
+    IEnumerable<Livro> livrosPaginados = Model.OrderBy(l=>l.Id).Skip(inicio).Take(numPorPagina);
 }
 <div class="row">
     <div class="col-md-12">
@@ -31,7 +49,7 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach(Livro l in Model)
+                @foreach(Livro l in livrosPaginados)
                 {
                 <tr>
                     <td>@l.Id</td>
@@ -43,5 +61,13 @@
                 }
             </tbody>
         </table>
+        <ul class="pagination">  
+        @for (int i = 1; i <= numeroDePaginas; i++)  
+        {
+            <li class="@retornaClasse(i)">
+                <a class="page-link" href="@Url.Action(href, new { page = i })">@i</a>  
+            </li>  
+        }  
+        </ul>  
     </div>
 </div>

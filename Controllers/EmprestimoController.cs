@@ -47,6 +47,7 @@ namespace Biblioteca.Controllers
 
         public IActionResult Listagem(string tipoFiltro, string filtro, int pagina = 1)
         {
+            Autenticacao.CheckLogin(this);
             FiltrosEmprestimos objFiltro = null;
             if(!string.IsNullOrEmpty(filtro))
             {
@@ -61,9 +62,11 @@ namespace Biblioteca.Controllers
                 string page = Request.QueryString.Value.Split('=').Last();
                 int pageNum = int.Parse(page);
                 ViewData["paginaAtual"] = pageNum;
+                ViewData["emprestimos"] = emprestimos;
                 return View(emprestimos);
             } else {
                 ViewData["paginaAtual"] = pagina;
+                ViewData["emprestimos"] = emprestimos;
                 return View(emprestimos);
             }
         }
