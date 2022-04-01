@@ -1,0 +1,70 @@
+@model ICollection<Usuario>
+@{
+    ViewData["Title"] = "Listagem de Usuários";
+    int numPorPagina = 10;
+
+    int numeroDePaginas = Convert.ToInt32(Math.Ceiling(Model.Count() / (double)numPorPagina));
+
+    int pgAtual = (int)ViewData["paginaAtual"];
+
+    string retornaClasse(int i) {
+        if(i == pgAtual) {
+            return "page-item active";
+        } else {
+            return "page-item";
+        }
+    }
+
+    string href = "Listagem";
+
+    int inicio = (pgAtual - 1) * numPorPagina;
+    IEnumerable<Usuario> usuariosPaginados = Model.OrderBy(e=>e.Id).Skip(inicio).Take(numPorPagina);
+
+    UsuarioService servico = new UsuarioService();
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <table class="table table-striped"> 
+            <thead>
+                <tr><th>Id</th>
+                <th>Username</th>
+                <th>Senha (Decriptada)</th>
+                <th></th>
+                <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach(Usuario u in usuariosPaginados)
+                {
+                    if(u.Username == "admin") {
+                        <tr>
+                            <td>@u.Id</td>
+                            <td>@u.Username</td>
+                            <td>---</td>
+                            <td>---</td>
+                            <td>---</td>
+                        </tr>
+                    } else {
+                        <tr>
+                            <td>@u.Id</td>
+                            <td>@u.Username</td>
+                            <td>@servico.Decriptar(u.Senha)</td>
+                            <td><a href="/Usuario/Edicao/@u.Id">Editar</a></td>
+                            <td><a href="/Usuario/Deletar/@u.Id" class="btn btn-sm btn-outline-danger">Deletar</a></td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+        <ul class="pagination">  
+        @for (int i = 1; i <= numeroDePaginas; i++)  
+        {
+            <li class="@retornaClasse(i)">
+                <a class="page-link" href="@Url.Action(href, new { page = i })">@i</a>  
+            </li>  
+        }  
+        </ul>  
+    </div>
+</div>
+

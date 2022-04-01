@@ -14407,6 +14407,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "s:\\Diretórios\\OneDrive\\Área de Trabalho\\cursos\\SENAC\\UC07\\Biblioteca - netcore3.1\\Biblioteca\\Views\\Usuario\\Listagem.cshtml",
+      "TargetPath": "Views\\Usuario\\Listagem.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "s:\\Diretórios\\OneDrive\\Área de Trabalho\\cursos\\SENAC\\UC07\\Biblioteca - netcore3.1\\Biblioteca\\Views\\Livro\\Edicao.cshtml",
       "TargetPath": "Views\\Livro\\Edicao.cshtml",
       "FileKind": "mvc"
@@ -14417,8 +14422,18 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "s:\\Diretórios\\OneDrive\\Área de Trabalho\\cursos\\SENAC\\UC07\\Biblioteca - netcore3.1\\Biblioteca\\Views\\Usuario\\Proibido.cshtml",
+      "TargetPath": "Views\\Usuario\\Proibido.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "s:\\Diretórios\\OneDrive\\Área de Trabalho\\cursos\\SENAC\\UC07\\Biblioteca - netcore3.1\\Biblioteca\\Views\\Home\\Privacy.cshtml",
       "TargetPath": "Views\\Home\\Privacy.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "s:\\Diretórios\\OneDrive\\Área de Trabalho\\cursos\\SENAC\\UC07\\Biblioteca - netcore3.1\\Biblioteca\\Views\\Usuario\\Edicao.cshtml",
+      "TargetPath": "Views\\Usuario\\Edicao.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -14457,8 +14472,18 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "s:\\Diretórios\\OneDrive\\Área de Trabalho\\cursos\\SENAC\\UC07\\Biblioteca - netcore3.1\\Biblioteca\\Views\\Usuario\\Deletar.cshtml",
+      "TargetPath": "Views\\Usuario\\Deletar.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "s:\\Diretórios\\OneDrive\\Área de Trabalho\\cursos\\SENAC\\UC07\\Biblioteca - netcore3.1\\Biblioteca\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
       "TargetPath": "Views\\Shared\\_ValidationScriptsPartial.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "s:\\Diretórios\\OneDrive\\Área de Trabalho\\cursos\\SENAC\\UC07\\Biblioteca - netcore3.1\\Biblioteca\\Views\\Usuario\\Cadastro.cshtml",
+      "TargetPath": "Views\\Usuario\\Cadastro.cshtml",
       "FileKind": "mvc"
     },
     {

@@ -1,7 +1,6 @@
 @model CadEmprestimoViewModel
 @{
     ViewData["Title"] = "Cadastro de Emprestimos";
-    var msgErro = ViewData["Erro"];
 }
 
 <h1 class="row justify-content-md-center">Cadastro de Empréstimo</h1>
@@ -40,5 +39,5 @@
         </fieldset>
         <input type="submit" value="Salvar" class="btn btn-primary"/>
     </form>
-    <p class="text-danger">@ViewData["Erro"]</p>
+    <p class="text-danger">@ViewData["Mensagem"]</p>
 </div>

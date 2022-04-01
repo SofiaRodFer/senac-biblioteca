@@ -20,6 +20,7 @@
     int inicio = (pgAtual - 1) * numPorPagina;
     IEnumerable<Livro> livrosPaginados = Model.OrderBy(l=>l.Id).Skip(inicio).Take(numPorPagina);
 }
+
 <div class="row">
     <div class="col-md-12">
     <form class="form-inline" method="POST">

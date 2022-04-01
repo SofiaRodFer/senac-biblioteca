@@ -16,6 +16,7 @@ namespace Biblioteca.Controllers
         [HttpPost]
         public IActionResult Cadastro(Livro l)
         {
+            Autenticacao.CheckLogin(this);
             LivroService livroService = new LivroService();
 
             if(l.Id == 0)
@@ -60,6 +61,21 @@ namespace Biblioteca.Controllers
             LivroService ls = new LivroService();
             Livro l = ls.ObterPorId(id);
             return View(l);
+        }
+
+        [HttpPost]
+        public IActionResult Edicao(Livro livro)
+        {
+            Autenticacao.CheckLogin(this);
+            LivroService livroService = new LivroService();
+
+            if(livro.Titulo == null || livro.Autor == null || livro.Ano == 0) {
+                ViewData["Mensagem"] = "Preencha todos os campos!";
+                return View("Edicao", livro);
+            } else {
+                livroService.Atualizar(livro);
+                return RedirectToAction("Listagem");
+            }
         }
     }
 }

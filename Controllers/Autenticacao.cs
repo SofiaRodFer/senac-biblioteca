@@ -13,5 +13,15 @@ namespace Biblioteca.Controllers
                 controller.Request.HttpContext.Response.Redirect("/Usuario/Login");
             }
         }
+
+        public static bool CheckAdmin(Controller controller)
+        {   
+            if(controller.HttpContext.Session.GetString("Username") == "admin")
+            {
+                return true;
+            } else {
+                return false;
+            }
+        }
     }
 }

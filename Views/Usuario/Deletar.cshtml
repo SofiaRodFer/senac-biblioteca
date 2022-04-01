@@ -1,0 +1,16 @@
+@model Usuario
+@{
+    ViewData["Title"] = "Deleção de Usuário";
+}
+<h1 class="row justify-content-md-center">Tem certeza que gostaria de deletar esse usuário?</h1>
+<div class="row justify-content-md-center">
+    <form asp-action="Deletar" method="POST" class="col-md-4">
+        <input type="hidden" asp-for="Id" />
+        <input type="hidden" asp-for="Username" />
+        <input type="hidden" asp-for="Senha" />
+        <input type="submit" value="Sim" class="btn btn-danger"/>
+    </form>
+    <a href="/Usuario/Listagem" class="btn btn-secondary">Não</a>
+</div>
+
+<p class="text-danger row justify-content-md-center">@ViewData["Mensagem"]</p>

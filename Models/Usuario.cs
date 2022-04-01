@@ -10,8 +10,10 @@ namespace Biblioteca.Models
 
         public Usuario(string username, string senha) {
             this.Username = username;
-            this.Senha = servico.Encrypt(senha);
+            this.Senha = servico.Encriptar(senha);
         }
+
+        public Usuario(){}
 
         public int Id { get; set; }
         public string Username { get; set; }

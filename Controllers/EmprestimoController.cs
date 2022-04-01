@@ -12,6 +12,7 @@ namespace Biblioteca.Controllers
     {
         public IActionResult Cadastro()
         {
+            Autenticacao.CheckLogin(this);
             LivroService livroService = new LivroService();
             EmprestimoService emprestimoService = new EmprestimoService();
 
@@ -24,6 +25,7 @@ namespace Biblioteca.Controllers
         [HttpPost]
         public IActionResult Cadastro(CadEmprestimoViewModel viewModel)
         {
+            Autenticacao.CheckLogin(this);
             EmprestimoService emprestimoService = new EmprestimoService();
             
             bool emprestimoAntesDaDevolucao = viewModel.Emprestimo.DataDevolucao.Date < viewModel.Emprestimo.DataEmprestimo.Date;
@@ -49,18 +51,19 @@ namespace Biblioteca.Controllers
         {
             Autenticacao.CheckLogin(this);
             FiltrosEmprestimos objFiltro = null;
+            
             if(!string.IsNullOrEmpty(filtro))
             {
                 objFiltro = new FiltrosEmprestimos();
                 objFiltro.Filtro = filtro;
                 objFiltro.TipoFiltro = tipoFiltro;
             }
+
             EmprestimoService emprestimoService = new EmprestimoService();
             var emprestimos = emprestimoService.ListarTodos(objFiltro);
 
             if(Request.QueryString.HasValue) {
-                string page = Request.QueryString.Value.Split('=').Last();
-                int pageNum = int.Parse(page);
+                int pageNum = int.Parse(Request.QueryString.Value.Split('=').Last());
                 ViewData["paginaAtual"] = pageNum;
                 ViewData["emprestimos"] = emprestimos;
                 return View(emprestimos);
@@ -73,6 +76,7 @@ namespace Biblioteca.Controllers
 
         public IActionResult Edicao(int id)
         {
+            Autenticacao.CheckLogin(this);
             LivroService livroService = new LivroService();
             EmprestimoService em = new EmprestimoService();
             Emprestimo e = em.ObterPorId(id);
