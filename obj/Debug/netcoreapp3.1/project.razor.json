@@ -14462,11 +14462,6 @@
       "FileKind": "mvc"
     },
     {
-      "FilePath": "s:\\Diretórios\\OneDrive\\Área de Trabalho\\cursos\\SENAC\\UC07\\Biblioteca - netcore3.1\\Biblioteca\\Views\\Home\\Login.cshtml",
-      "TargetPath": "Views\\Home\\Login.cshtml",
-      "FileKind": "mvc"
-    },
-    {
       "FilePath": "s:\\Diretórios\\OneDrive\\Área de Trabalho\\cursos\\SENAC\\UC07\\Biblioteca - netcore3.1\\Biblioteca\\Views\\Livro\\Cadastro.cshtml",
       "TargetPath": "Views\\Livro\\Cadastro.cshtml",
       "FileKind": "mvc"
@@ -14474,6 +14469,11 @@
     {
       "FilePath": "s:\\Diretórios\\OneDrive\\Área de Trabalho\\cursos\\SENAC\\UC07\\Biblioteca - netcore3.1\\Biblioteca\\Views\\Livro\\_FormCadastro.cshtml",
       "TargetPath": "Views\\Livro\\_FormCadastro.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "s:\\Diretórios\\OneDrive\\Área de Trabalho\\cursos\\SENAC\\UC07\\Biblioteca - netcore3.1\\Biblioteca\\Views\\Usuario\\Login.cshtml",
+      "TargetPath": "Views\\Usuario\\Login.cshtml",
       "FileKind": "mvc"
     }
   ],
