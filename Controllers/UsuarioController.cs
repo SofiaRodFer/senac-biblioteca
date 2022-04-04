@@ -43,12 +43,14 @@ namespace Biblioteca.Controllers
 
 
         public IActionResult Cadastro() {
+            Autenticacao.CheckLogin(this);
             return View();
         }
 
         [HttpPost]
         public IActionResult Cadastro(Usuario usuario)
         {
+            Autenticacao.CheckLogin(this);
             UsuarioService usuarioService = new UsuarioService();
 
             Usuario existeUsuario = usuarioService.ObterPorUsername(usuario.Username);
@@ -63,6 +65,7 @@ namespace Biblioteca.Controllers
 
         public IActionResult Edicao(int id)
         {
+            Autenticacao.CheckLogin(this);
             UsuarioService usuarioService = new UsuarioService();
             Usuario u = usuarioService.ObterPorId(id);
             string senhaDecriptada = usuarioService.Decriptar(u.Senha);
@@ -74,6 +77,7 @@ namespace Biblioteca.Controllers
         [HttpPost]
         public IActionResult Edicao(Usuario usuario)
         {
+            Autenticacao.CheckLogin(this);
             UsuarioService usuarioService = new UsuarioService();
 
             if(usuario.Username == null || usuario.Senha == null) {
