@@ -10,7 +10,6 @@
         <input type="hidden" asp-for="Id" />
         <div class="form-group">
             <label asp-for="Titulo">Titulo</label>
-<<<<<<< HEAD
             <input asp-for="Titulo" class="form-control" required/>
         </div>
         <div class="form-group">
@@ -19,23 +18,9 @@
         </div>
         <div>
             <label asp-for="Ano">Ano</label>
-            <input asp-for="Ano" required/>
+            <input asp-for="Ano" class="form-control" required/>
         </div>
-        <input type="submit" value="Salvar" class="btn btn-primary"/>
+        <input type="submit" value="Salvar" class="btn btn-primary form-control" />
     </form>
     <p class="text-danger row justify-content-md-center">@ViewData["Mensagem"]</p>
-=======
-            <input asp-for="Titulo" class="form-control"/>
-        </div>
-        <div class="form-group">
-            <label asp-for="Autor">Ator</label>
-            <input asp-for="Autor" class="form-control"/>
-        </div>
-        <div>
-            <label asp-for="Ano">Ano</label>
-            <input asp-for="Ano" />
-        </div>
-        <input type="submit" value="Salvar" class="btn btn-primary"/>
-    </form>
->>>>>>> 485efef68169b9d7be476153095d95e183e57389
 </div>

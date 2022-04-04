@@ -26,12 +26,13 @@ namespace Biblioteca.Models
                 emprestimo.LivroId = e.LivroId;
                 emprestimo.DataEmprestimo = e.DataEmprestimo;
                 emprestimo.DataDevolucao = e.DataDevolucao;
+                emprestimo.Devolvido = e.Devolvido;
 
                 bc.SaveChanges();
             }
         }
 
-        public ICollection<Emprestimo> ListarTodos(FiltrosEmprestimos filtro)
+        public ICollection<Emprestimo> ListarTodos(FiltrosEmprestimos filtro = null)
         {
             using(BibliotecaContext bc = new BibliotecaContext())
             {
@@ -39,7 +40,6 @@ namespace Biblioteca.Models
                 
                 if(filtro != null)
                 {
-                    //definindo dinamicamente a filtragem
                     switch(filtro.TipoFiltro)
                     {
                         case "Usuario":
@@ -57,11 +57,9 @@ namespace Biblioteca.Models
                 }
                 else
                 {
-                    // caso filtro não tenha sido informado
                     query = bc.Emprestimos;
                 }
                 
-                //ordenação padrão
                 return query.Include(e => e.Livro).ToList().OrderBy(e => e.NomeUsuario).ToList();
             }
         }
