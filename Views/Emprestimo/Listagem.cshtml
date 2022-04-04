@@ -1,26 +1,19 @@
-@model ICollection<Emprestimo>
+@model IEnumerable<Emprestimo>
 @{
     ViewData["Title"] = "Listagem de Empréstimos";
-    int numPorPagina = 10;
+    int paginaAtual = (int)ViewData["paginaAtual"];
 
-    IEnumerable<Emprestimo> emprestimos = (IEnumerable<Emprestimo>)ViewData["emprestimos"];
+    string href = "Listagem";
 
-    var numeroDePaginas = Convert.ToInt32(Math.Ceiling(emprestimos.Count() / (double)numPorPagina));
-
-    int pgAtual = (int)ViewData["paginaAtual"];
+    int numeroDePaginas = (int)ViewData["numeroPaginas"];
 
     string retornaClasse(int i) {
-        if(i == pgAtual) {
+        if(i == paginaAtual) {
             return "page-item active";
         } else {
             return "page-item";
         }
     }
-
-    string href = "Listagem";
-
-    int inicio = (pgAtual - 1) * numPorPagina;
-    IEnumerable<Emprestimo> emprestimosPaginados = emprestimos.OrderBy(e=>e.Id).Skip(inicio).Take(numPorPagina);
 }
 
 <div class="row">
@@ -43,45 +36,53 @@
 
 <div class="row">
     <div class="col-md-12">
-        <table class="table table-striped"> 
-            <thead>
-                <tr><th>Id</th>
-                <th>Usuario</th>
-                <th>Data Empréstimo</th>
-                <th>Data Devolução</th>
-                <th>Livro</th>
-                <th>Autor</th>
-                <th></th>
+        @if(Model.Count() == 0) {
+            <table class="table table-striped">
+                <tr>
+                    <th>Nenhum registro encontrado!</th>
                 </tr>
-            </thead>
-            <tbody>
-                @foreach(Emprestimo e in emprestimosPaginados)
-                {
-                    @if(e.DataDevolucao.Date < DateTime.Now.Date && e.Devolvido == false) 
+            </table>
+        } else {
+            <table class="table table-striped"> 
+                <thead>
+                    <tr><th>Id</th>
+                    <th>Usuario</th>
+                    <th>Data Empréstimo</th>
+                    <th>Data Devolução</th>
+                    <th>Livro</th>
+                    <th>Autor</th>
+                    <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach(Emprestimo e in Model)
                     {
-                        <tr class="table-warning">
-                            <td>@e.Id</td>
-                            <td>@e.NomeUsuario</td>
-                            <td>@e.DataEmprestimo.ToString("dd/MM/yyyy")</td>
-                            <td>@e.DataDevolucao.ToString("dd/MM/yyyy")</td>
-                            <td>@e.Livro.Titulo</td>
-                            <td>@e.Livro.Autor</td>
-                            <td><a href="/Emprestimo/Edicao/@e.Id">Editar</a></td>
-                        </tr>
-                    } else {
-                        <tr>
-                            <td>@e.Id</td>
-                            <td>@e.NomeUsuario</td>
-                            <td>@e.DataEmprestimo.ToString("dd/MM/yyyy")</td>
-                            <td>@e.DataDevolucao.ToString("dd/MM/yyyy")</td>
-                            <td>@e.Livro.Titulo</td>
-                            <td>@e.Livro.Autor</td>
-                            <td><a href="/Emprestimo/Edicao/@e.Id">Editar</a></td>
-                        </tr>
+                        @if(e.DataDevolucao.Date < DateTime.Now.Date && e.Devolvido == false) 
+                        {
+                            <tr class="table-warning">
+                                <td>@e.Id</td>
+                                <td>@e.NomeUsuario</td>
+                                <td>@e.DataEmprestimo.ToString("dd/MM/yyyy")</td>
+                                <td>@e.DataDevolucao.ToString("dd/MM/yyyy")</td>
+                                <td>@e.Livro.Titulo</td>
+                                <td>@e.Livro.Autor</td>
+                                <td><a href="/Emprestimo/Edicao/@e.Id">Editar</a></td>
+                            </tr>
+                        } else {
+                            <tr>
+                                <td>@e.Id</td>
+                                <td>@e.NomeUsuario</td>
+                                <td>@e.DataEmprestimo.ToString("dd/MM/yyyy")</td>
+                                <td>@e.DataDevolucao.ToString("dd/MM/yyyy")</td>
+                                <td>@e.Livro.Titulo</td>
+                                <td>@e.Livro.Autor</td>
+                                <td><a href="/Emprestimo/Edicao/@e.Id">Editar</a></td>
+                            </tr>
+                        }
                     }
-                }
-            </tbody>
-        </table>
+                </tbody>
+            </table>
+        }
         <ul class="pagination">  
         @for (int i = 1; i <= numeroDePaginas; i++)  
         {

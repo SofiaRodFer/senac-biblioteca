@@ -1,6 +1,7 @@
 using Biblioteca.Models;
 using Microsoft.AspNetCore.Mvc;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Biblioteca.Controllers
@@ -21,7 +22,13 @@ namespace Biblioteca.Controllers
 
             if(l.Id == 0)
             {
-                livroService.Inserir(l);
+                if(l.Titulo == null || l.Autor == null || l.Ano == 0) {
+                    ViewData["Mensagem"] = "Preencha todos os campos!";
+                    return View("Cadastro", l);
+                } else {
+                    livroService.Inserir(l);
+                    return RedirectToAction("Listagem");
+                }
             }
             else
             {
@@ -41,25 +48,31 @@ namespace Biblioteca.Controllers
                 objFiltro.Filtro = filtro;
                 objFiltro.TipoFiltro = tipoFiltro;
             }
+            
             LivroService livroService = new LivroService();
-            var livros = livroService.ListarTodos(objFiltro);
+            ICollection<Livro> livrosFiltrados = livroService.ListarTodos(objFiltro);
 
+            int paginaAtual;
             if(Request.QueryString.HasValue) {
-                string page = Request.QueryString.Value.Split('=').Last();
-                int pageNum = int.Parse(page);
-                ViewData["paginaAtual"] = pageNum;
-                return View(livros);
+                paginaAtual = int.Parse(Request.QueryString.Value.Split('=').Last());
+                ViewData["paginaAtual"] = paginaAtual;
+
             } else {
+                paginaAtual = pagina;
                 ViewData["paginaAtual"] = pagina;
-                return View(livros);
             }
+
+            IEnumerable<Livro> livros = livroService.Paginacao(livrosFiltrados, paginaAtual).Item1;
+            ViewData["numeroPaginas"] = livroService.Paginacao(livrosFiltrados, paginaAtual).Item2;
+
+            return View(livros);
         }
 
         public IActionResult Edicao(int id)
         {
             Autenticacao.CheckLogin(this);
-            LivroService ls = new LivroService();
-            Livro l = ls.ObterPorId(id);
+            LivroService livroService = new LivroService();
+            Livro l = livroService.ObterPorId(id);
             return View(l);
         }
 

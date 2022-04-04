@@ -1,5 +1,5 @@
 {
-  "FilePath": "s:\\Diretórios\\OneDrive\\Área de Trabalho\\cursos\\SENAC\\UC07\\Biblioteca - netcore3.1\\Biblioteca\\Biblioteca.csproj",
+  "FilePath": "s:\\Diretórios\\OneDrive\\Área de Trabalho\\cursos\\SENAC\\UC07\\Atv02_Sofia_R_F_UC07\\Biblioteca.csproj",
   "Configuration": {
     "ConfigurationName": "MVC-3.0",
     "LanguageVersion": "3.0",
@@ -14402,103 +14402,103 @@
   "RootNamespace": "Biblioteca",
   "Documents": [
     {
-      "FilePath": "s:\\Diretórios\\OneDrive\\Área de Trabalho\\cursos\\SENAC\\UC07\\Biblioteca - netcore3.1\\Biblioteca\\Views\\_ViewImports.cshtml",
-      "TargetPath": "Views\\_ViewImports.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "s:\\Diretórios\\OneDrive\\Área de Trabalho\\cursos\\SENAC\\UC07\\Biblioteca - netcore3.1\\Biblioteca\\Views\\Usuario\\Listagem.cshtml",
-      "TargetPath": "Views\\Usuario\\Listagem.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "s:\\Diretórios\\OneDrive\\Área de Trabalho\\cursos\\SENAC\\UC07\\Biblioteca - netcore3.1\\Biblioteca\\Views\\Livro\\Edicao.cshtml",
-      "TargetPath": "Views\\Livro\\Edicao.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "s:\\Diretórios\\OneDrive\\Área de Trabalho\\cursos\\SENAC\\UC07\\Biblioteca - netcore3.1\\Biblioteca\\Views\\Emprestimo\\Edicao.cshtml",
-      "TargetPath": "Views\\Emprestimo\\Edicao.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "s:\\Diretórios\\OneDrive\\Área de Trabalho\\cursos\\SENAC\\UC07\\Biblioteca - netcore3.1\\Biblioteca\\Views\\Usuario\\Proibido.cshtml",
-      "TargetPath": "Views\\Usuario\\Proibido.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "s:\\Diretórios\\OneDrive\\Área de Trabalho\\cursos\\SENAC\\UC07\\Biblioteca - netcore3.1\\Biblioteca\\Views\\Home\\Privacy.cshtml",
+      "FilePath": "s:\\Diretórios\\OneDrive\\Área de Trabalho\\cursos\\SENAC\\UC07\\Atv02_Sofia_R_F_UC07\\Views\\Home\\Privacy.cshtml",
       "TargetPath": "Views\\Home\\Privacy.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "s:\\Diretórios\\OneDrive\\Área de Trabalho\\cursos\\SENAC\\UC07\\Biblioteca - netcore3.1\\Biblioteca\\Views\\Usuario\\Edicao.cshtml",
+      "FilePath": "s:\\Diretórios\\OneDrive\\Área de Trabalho\\cursos\\SENAC\\UC07\\Atv02_Sofia_R_F_UC07\\Views\\Emprestimo\\Edicao.cshtml",
+      "TargetPath": "Views\\Emprestimo\\Edicao.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "s:\\Diretórios\\OneDrive\\Área de Trabalho\\cursos\\SENAC\\UC07\\Atv02_Sofia_R_F_UC07\\Views\\Usuario\\Listagem.cshtml",
+      "TargetPath": "Views\\Usuario\\Listagem.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "s:\\Diretórios\\OneDrive\\Área de Trabalho\\cursos\\SENAC\\UC07\\Atv02_Sofia_R_F_UC07\\Views\\Usuario\\Edicao.cshtml",
       "TargetPath": "Views\\Usuario\\Edicao.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "s:\\Diretórios\\OneDrive\\Área de Trabalho\\cursos\\SENAC\\UC07\\Biblioteca - netcore3.1\\Biblioteca\\Views\\Emprestimo\\Listagem.cshtml",
-      "TargetPath": "Views\\Emprestimo\\Listagem.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "s:\\Diretórios\\OneDrive\\Área de Trabalho\\cursos\\SENAC\\UC07\\Biblioteca - netcore3.1\\Biblioteca\\Views\\Emprestimo\\Cadastro.cshtml",
-      "TargetPath": "Views\\Emprestimo\\Cadastro.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "s:\\Diretórios\\OneDrive\\Área de Trabalho\\cursos\\SENAC\\UC07\\Biblioteca - netcore3.1\\Biblioteca\\Views\\Shared\\_CookieConsentPartial.cshtml",
-      "TargetPath": "Views\\Shared\\_CookieConsentPartial.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "s:\\Diretórios\\OneDrive\\Área de Trabalho\\cursos\\SENAC\\UC07\\Biblioteca - netcore3.1\\Biblioteca\\Views\\Livro\\Listagem.cshtml",
-      "TargetPath": "Views\\Livro\\Listagem.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "s:\\Diretórios\\OneDrive\\Área de Trabalho\\cursos\\SENAC\\UC07\\Biblioteca - netcore3.1\\Biblioteca\\Views\\_ViewStart.cshtml",
-      "TargetPath": "Views\\_ViewStart.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "s:\\Diretórios\\OneDrive\\Área de Trabalho\\cursos\\SENAC\\UC07\\Biblioteca - netcore3.1\\Biblioteca\\Views\\Shared\\_Layout.cshtml",
-      "TargetPath": "Views\\Shared\\_Layout.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "s:\\Diretórios\\OneDrive\\Área de Trabalho\\cursos\\SENAC\\UC07\\Biblioteca - netcore3.1\\Biblioteca\\Views\\Home\\Index.cshtml",
-      "TargetPath": "Views\\Home\\Index.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "s:\\Diretórios\\OneDrive\\Área de Trabalho\\cursos\\SENAC\\UC07\\Biblioteca - netcore3.1\\Biblioteca\\Views\\Usuario\\Deletar.cshtml",
-      "TargetPath": "Views\\Usuario\\Deletar.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "s:\\Diretórios\\OneDrive\\Área de Trabalho\\cursos\\SENAC\\UC07\\Biblioteca - netcore3.1\\Biblioteca\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
-      "TargetPath": "Views\\Shared\\_ValidationScriptsPartial.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "s:\\Diretórios\\OneDrive\\Área de Trabalho\\cursos\\SENAC\\UC07\\Biblioteca - netcore3.1\\Biblioteca\\Views\\Usuario\\Cadastro.cshtml",
-      "TargetPath": "Views\\Usuario\\Cadastro.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "s:\\Diretórios\\OneDrive\\Área de Trabalho\\cursos\\SENAC\\UC07\\Biblioteca - netcore3.1\\Biblioteca\\Views\\Livro\\Cadastro.cshtml",
+      "FilePath": "s:\\Diretórios\\OneDrive\\Área de Trabalho\\cursos\\SENAC\\UC07\\Atv02_Sofia_R_F_UC07\\Views\\Livro\\Cadastro.cshtml",
       "TargetPath": "Views\\Livro\\Cadastro.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "s:\\Diretórios\\OneDrive\\Área de Trabalho\\cursos\\SENAC\\UC07\\Biblioteca - netcore3.1\\Biblioteca\\Views\\Livro\\_FormCadastro.cshtml",
+      "FilePath": "s:\\Diretórios\\OneDrive\\Área de Trabalho\\cursos\\SENAC\\UC07\\Atv02_Sofia_R_F_UC07\\Views\\Home\\Index.cshtml",
+      "TargetPath": "Views\\Home\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "s:\\Diretórios\\OneDrive\\Área de Trabalho\\cursos\\SENAC\\UC07\\Atv02_Sofia_R_F_UC07\\Views\\Emprestimo\\Cadastro.cshtml",
+      "TargetPath": "Views\\Emprestimo\\Cadastro.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "s:\\Diretórios\\OneDrive\\Área de Trabalho\\cursos\\SENAC\\UC07\\Atv02_Sofia_R_F_UC07\\Views\\Livro\\Listagem.cshtml",
+      "TargetPath": "Views\\Livro\\Listagem.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "s:\\Diretórios\\OneDrive\\Área de Trabalho\\cursos\\SENAC\\UC07\\Atv02_Sofia_R_F_UC07\\Views\\Livro\\_FormCadastro.cshtml",
       "TargetPath": "Views\\Livro\\_FormCadastro.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "s:\\Diretórios\\OneDrive\\Área de Trabalho\\cursos\\SENAC\\UC07\\Biblioteca - netcore3.1\\Biblioteca\\Views\\Usuario\\Login.cshtml",
+      "FilePath": "s:\\Diretórios\\OneDrive\\Área de Trabalho\\cursos\\SENAC\\UC07\\Atv02_Sofia_R_F_UC07\\Views\\Emprestimo\\Listagem.cshtml",
+      "TargetPath": "Views\\Emprestimo\\Listagem.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "s:\\Diretórios\\OneDrive\\Área de Trabalho\\cursos\\SENAC\\UC07\\Atv02_Sofia_R_F_UC07\\Views\\Usuario\\Login.cshtml",
       "TargetPath": "Views\\Usuario\\Login.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "s:\\Diretórios\\OneDrive\\Área de Trabalho\\cursos\\SENAC\\UC07\\Atv02_Sofia_R_F_UC07\\Views\\_ViewStart.cshtml",
+      "TargetPath": "Views\\_ViewStart.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "s:\\Diretórios\\OneDrive\\Área de Trabalho\\cursos\\SENAC\\UC07\\Atv02_Sofia_R_F_UC07\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
+      "TargetPath": "Views\\Shared\\_ValidationScriptsPartial.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "s:\\Diretórios\\OneDrive\\Área de Trabalho\\cursos\\SENAC\\UC07\\Atv02_Sofia_R_F_UC07\\Views\\Usuario\\Cadastro.cshtml",
+      "TargetPath": "Views\\Usuario\\Cadastro.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "s:\\Diretórios\\OneDrive\\Área de Trabalho\\cursos\\SENAC\\UC07\\Atv02_Sofia_R_F_UC07\\Views\\_ViewImports.cshtml",
+      "TargetPath": "Views\\_ViewImports.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "s:\\Diretórios\\OneDrive\\Área de Trabalho\\cursos\\SENAC\\UC07\\Atv02_Sofia_R_F_UC07\\Views\\Shared\\_Layout.cshtml",
+      "TargetPath": "Views\\Shared\\_Layout.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "s:\\Diretórios\\OneDrive\\Área de Trabalho\\cursos\\SENAC\\UC07\\Atv02_Sofia_R_F_UC07\\Views\\Shared\\_CookieConsentPartial.cshtml",
+      "TargetPath": "Views\\Shared\\_CookieConsentPartial.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "s:\\Diretórios\\OneDrive\\Área de Trabalho\\cursos\\SENAC\\UC07\\Atv02_Sofia_R_F_UC07\\Views\\Livro\\Edicao.cshtml",
+      "TargetPath": "Views\\Livro\\Edicao.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "s:\\Diretórios\\OneDrive\\Área de Trabalho\\cursos\\SENAC\\UC07\\Atv02_Sofia_R_F_UC07\\Views\\Usuario\\Deletar.cshtml",
+      "TargetPath": "Views\\Usuario\\Deletar.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "s:\\Diretórios\\OneDrive\\Área de Trabalho\\cursos\\SENAC\\UC07\\Atv02_Sofia_R_F_UC07\\Views\\Usuario\\Proibido.cshtml",
+      "TargetPath": "Views\\Usuario\\Proibido.cshtml",
       "FileKind": "mvc"
     }
   ],

@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 using System.Collections.Generic;
 using System.Collections;
@@ -22,6 +23,7 @@ namespace Biblioteca.Models
                 Livro livro = bc.Livros.Find(l.Id);
                 livro.Autor = l.Autor;
                 livro.Titulo = l.Titulo;
+                livro.Ano = l.Ano;
 
                 bc.SaveChanges();
             }
@@ -35,7 +37,6 @@ namespace Biblioteca.Models
                 
                 if(filtro != null)
                 {
-                    //definindo dinamicamente a filtragem
                     switch(filtro.TipoFiltro)
                     {
                         case "Autor":
@@ -53,11 +54,9 @@ namespace Biblioteca.Models
                 }
                 else
                 {
-                    // caso filtro não tenha sido informado
                     query = bc.Livros;
                 }
                 
-                //ordenação padrão
                 return query.OrderBy(l => l.Titulo).ToList();
             }
         }
@@ -66,8 +65,6 @@ namespace Biblioteca.Models
         {
             using(BibliotecaContext bc = new BibliotecaContext())
             {
-                //busca os livros onde o id não está entre os ids de livro em empréstimo
-                // utiliza uma subconsulta
                 return
                     bc.Livros
                     .Where(l =>  !(bc.Emprestimos.Where(e => e.Devolvido == false).Select(e => e.LivroId).Contains(l.Id)) )
@@ -81,6 +78,17 @@ namespace Biblioteca.Models
             {
                 return bc.Livros.Find(id);
             }
+        }
+
+        public (IEnumerable<Livro>, int) Paginacao(ICollection<Livro> livrosFiltrados, int pgAtual) {
+            int numPorPagina = 10;
+
+            int numeroDePaginas = Convert.ToInt32(Math.Ceiling(livrosFiltrados.Count() / (double)numPorPagina));
+
+            int inicio = (pgAtual - 1) * numPorPagina;
+            IEnumerable<Livro> livrosPaginados = livrosFiltrados.OrderBy(l=>l.Id).Skip(inicio).Take(numPorPagina);
+
+            return (livrosPaginados, numeroDePaginas);
         }
     }
 }

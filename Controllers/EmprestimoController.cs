@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Http;
 using System;
 using System.Linq;
+using System.Collections.Generic;
 
 namespace Biblioteca.Controllers
 {
@@ -51,27 +52,30 @@ namespace Biblioteca.Controllers
         {
             Autenticacao.CheckLogin(this);
             FiltrosEmprestimos objFiltro = null;
-            
             if(!string.IsNullOrEmpty(filtro))
             {
                 objFiltro = new FiltrosEmprestimos();
                 objFiltro.Filtro = filtro;
                 objFiltro.TipoFiltro = tipoFiltro;
             }
-
+            
             EmprestimoService emprestimoService = new EmprestimoService();
-            var emprestimos = emprestimoService.ListarTodos(objFiltro);
+            ICollection<Emprestimo> emprestimosFiltrados = emprestimoService.ListarTodos(objFiltro);
 
+            int paginaAtual;
             if(Request.QueryString.HasValue) {
-                int pageNum = int.Parse(Request.QueryString.Value.Split('=').Last());
-                ViewData["paginaAtual"] = pageNum;
-                ViewData["emprestimos"] = emprestimos;
-                return View(emprestimos);
+                paginaAtual = int.Parse(Request.QueryString.Value.Split('=').Last());
+                ViewData["paginaAtual"] = paginaAtual;
+
             } else {
+                paginaAtual = pagina;
                 ViewData["paginaAtual"] = pagina;
-                ViewData["emprestimos"] = emprestimos;
-                return View(emprestimos);
             }
+
+            IEnumerable<Emprestimo> emprestimos = emprestimoService.Paginacao(emprestimosFiltrados, paginaAtual).Item1;
+            ViewData["numeroPaginas"] = emprestimoService.Paginacao(emprestimosFiltrados, paginaAtual).Item2;
+
+            return View(emprestimos);
         }
 
         public IActionResult Edicao(int id)

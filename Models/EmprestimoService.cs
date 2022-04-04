@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using System;
 using Microsoft.EntityFrameworkCore;
 
 namespace Biblioteca.Models
@@ -71,6 +72,17 @@ namespace Biblioteca.Models
             {
                 return bc.Emprestimos.Find(id);
             }
+        }
+
+        public (IEnumerable<Emprestimo>, int) Paginacao(ICollection<Emprestimo> emprestimosFiltrados, int pgAtual) {
+            int numPorPagina = 10;
+
+            int numeroDePaginas = Convert.ToInt32(Math.Ceiling(emprestimosFiltrados.Count() / (double)numPorPagina));
+
+            int inicio = (pgAtual - 1) * numPorPagina;
+            IEnumerable<Emprestimo> emprestimosPaginados = emprestimosFiltrados.OrderBy(l=>l.Id).Skip(inicio).Take(numPorPagina);
+
+            return (emprestimosPaginados, numeroDePaginas);
         }
     }
 }

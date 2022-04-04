@@ -1,24 +1,20 @@
-@model List<Livro>
+@model IEnumerable<Livro>
 @{
     ViewData["Title"] = "Listagem de Livros";
-    int numPorPagina = 10;
 
-    var numeroDePaginas = Convert.ToInt32(Math.Ceiling(Model.Count() / (double)numPorPagina));
+    int paginaAtual = (int)ViewData["paginaAtual"];
 
-    int pgAtual = (int)ViewData["paginaAtual"];
+    string href = "Listagem";
+
+    int numeroDePaginas = (int)ViewData["numeroPaginas"];
 
     string retornaClasse(int i) {
-        if(i == pgAtual) {
+        if(i == paginaAtual) {
             return "page-item active";
         } else {
             return "page-item";
         }
     }
-
-    string href = "Listagem";
-
-    int inicio = (pgAtual - 1) * numPorPagina;
-    IEnumerable<Livro> livrosPaginados = Model.OrderBy(l=>l.Id).Skip(inicio).Take(numPorPagina);
 }
 
 <div class="row">
@@ -40,28 +36,36 @@
 
 <div class="row">
     <div class="col-md-12">
-        <table class="table table-striped"> 
-            <thead>
-                <tr><th>Id</th>
-                <th>Titulo</th>
-                <th>Autor</th>
-                <th>Ano</th>
-                <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach(Livro l in livrosPaginados)
-                {
-                <tr>
-                    <td>@l.Id</td>
-                    <td>@l.Titulo</td>
-                    <td>@l.Autor</td>
-                    <td>@l.Ano</td>
-                    <td><a href="/Livro/Edicao/@l.Id">Editar</a></td>
-                </tr>
-                }
-            </tbody>
-        </table>
+        @if(Model.Count() == 0) {
+                <table class="table table-striped">
+                    <tr>
+                        <th>Nenhum registro encontrado!</th>
+                    </tr>
+                </table>
+            } else {
+            <table class="table table-striped"> 
+                <thead>
+                    <tr><th>Id</th>
+                    <th>Titulo</th>
+                    <th>Autor</th>
+                    <th>Ano</th>
+                    <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach(Livro l in Model)
+                    {
+                    <tr>
+                        <td>@l.Id</td>
+                        <td>@l.Titulo</td>
+                        <td>@l.Autor</td>
+                        <td>@l.Ano</td>
+                        <td><a href="/Livro/Edicao/@l.Id">Editar</a></td>
+                    </tr>
+                    }
+                </tbody>
+            </table>
+        }
         <ul class="pagination">  
         @for (int i = 1; i <= numeroDePaginas; i++)  
         {
